@@ -45,8 +45,12 @@ export default function Home(){
       const savedPrompts = JSON.parse(localStorage.getItem("chatPrompts") || "[]");
       savedPrompts.push({ prompt, timestamp: new Date().toISOString() });
       localStorage.setItem("chatPrompts", JSON.stringify(savedPrompts));
-    }catch(err:any){
-      setOutputs(err)
+    }catch (err: unknown) {
+      if (err instanceof Error) {
+        setOutputs([err.message]);
+      } else {
+        setOutputs(["An unknown error occurred"]);
+      }
     }finally{
       setLoading(false);
     }

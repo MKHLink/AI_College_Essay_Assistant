@@ -33,12 +33,19 @@ export async function POST(req:Request){
             status:200,
             headers:{"Content-Type":"application/json"},
         });
-    }catch(err:any){
-        console.error("Full error:", err);
-        console.error("Error response:", err.response?.data);
+    }catch (err: unknown) {
+        if (err instanceof Error) {
+            console.error("Full error:", err);
+            console.error("Error response:", err.message);
+            return new Response(
+                JSON.stringify({ error: err.message }),
+                { status: 500 }
+            );
+        }
+        console.error("Unexpected error:", err);
         return new Response(
-            JSON.stringify({error:err.message}),
-            {status:500}
+            JSON.stringify({ error: "An unknown error occurred" }),
+            { status: 500 }
         );
     }
 }
