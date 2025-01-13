@@ -1,4 +1,6 @@
 "use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 
 import {useState} from "react";
 import OutputCard from "./components/OutputCard";
