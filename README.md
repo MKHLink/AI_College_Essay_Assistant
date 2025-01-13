@@ -4,3 +4,6 @@
 
 ### Visit the link below to see the app in action:
  https://ai-college-essay-assistant-h3mzxuzf3-mkhlinks-projects.vercel.app/
+
+## Known Bugs:
+Generating may throw a JSON related error, this seems to stem from Vercel's deployment or how the environmental variables are being loaded, this issues is generally fixed by either clicking the generate button again or reloading the page
